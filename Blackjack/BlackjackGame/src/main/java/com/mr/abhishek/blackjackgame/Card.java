@@ -20,7 +20,7 @@ public class Card {
     private int suit;       //represents the suit of a card
     private int value;      //represents the value of a card
     private static String[] myCards = {"Joker", "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
-    private static String[] suits = {"Clubs","Diamonds","Hearts","Spades"};
+
     /*
      * Created with an integer that represents a spot in the String array ranks and the String array suits. This represents
      * the rank and suit of an individual card.
@@ -37,7 +37,7 @@ public class Card {
      */
     
     public String toString() {
-        return myCards[rank] + " of " + suits[suit];
+        return myCards[rank] + " of " + Suit.values()[suit];
     }
 
     /*
