@@ -5,19 +5,20 @@
  */
 package com.mr.abhishek.blackjackgame;
 import java.util.ArrayList;
-import java.util.Arrays;
 /**
+ *
  * @author mr.abhishek
  */
-public class Dealer {
-    ArrayList<Card> hand;       //represents the dealer's hand
-    private int handvalue=0;    //value of the dealer's hand (starts at 0)
-    private Card[] aHand;       //used to convert the dealer's hand to an array
-    private int AceCounter;     //counts the aces in the dealer's hand
-    Dealer(Deck deck)
+public class Dealer extends Player {
+    ArrayList<ACard> hand;//represents the dealer's hand
+    private int handvalue=0;//value of the dealer's hand (starts at 0)
+    private ACard[] aHand;//used to convert the dealer's hand to an array
+    private int AceCounter;//counts the aces in the dealer's hand
+    Dealer(GroupOfCards deck)
     {
+        super("name");
         hand = new ArrayList<>();
-        aHand = new Card[]{};
+        aHand = new ACard[]{};
         int AceCounter=0;
         for(int i=0; i<2; i++)
         {
@@ -43,14 +44,14 @@ public class Dealer {
      */
     public void showFirstCard()
     {
-        Card[] firstCard = new Card[]{};
+        ACard[] firstCard = new ACard[]{};
         firstCard = hand.toArray(firstCard);
         System.out.println("["+firstCard[0]+"]");
     }
     /*
      * Gives the dealer another card and updates the value of his hand. Takes into account the value of aces.
      */
-    public void Hit(Deck deck)
+    public void Hit(GroupOfCards deck)
     {
         hand.add(deck.drawCard());
         aHand = hand.toArray(aHand);
@@ -121,7 +122,7 @@ public class Dealer {
     /*
      * Takes the turn for the dealer and returns the value of his hand.
      */
-    public int takeTurn(Deck deck)
+    public int takeTurn(GroupOfCards deck)
     {
         while(wantsToHit())
         {
